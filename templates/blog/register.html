@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>注册</h1>
+
+<form action="{% url 'blog:register' %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}<br/>
+        {{ field.label_tag }}
+        {{ field }}<br/>
+        {{ field.errors }}
+        {% if field.help_text %}
+            <p class="help text-small text-muted">{{ field.help_text | safe }}</p>
+        {% endif %}
+    {% endfor %}
+    <input type="submit" value="注册" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap-theme.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap-theme.min.css' %}" />
+    <script src="{% static 'bootstrap-3.3.5/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap-3.3.5/js/jquery-3.2.1.min.js' %}"></script>
+
+    <title>MyBlog</title>
+
+</head>
+<body>
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'index' %}">My Blog</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>Home</li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'password_change' %}?next={{ request.path }}">修改密码</a></li>
+                <li><a href="{% url 'logout' %}?next={% url 'index' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

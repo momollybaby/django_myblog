@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<p>恭喜注册成功！</p>
+
+<form action="{% url 'blog:login' %}" method="get">
+    <input type="submit" value="立刻登录" />
+</form>
+
+{% endblock %}

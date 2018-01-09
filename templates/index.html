@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <p>你已经登录，欢迎来到Django Blog</p>
+{% else %}
+    <p>欢迎来到Django Blog</p>
+    <button class="btn btn-default"><a href="{% url 'login' %}?next={{ request.path }}">现在马上登录？</a></button>
+    <button class="btn btn-default"><a href="{% url 'blog:register' %}?next={{ request.path }}">没有账号，立即注册？</a></button>
+{% endif %}
+
+{% endblock %}
